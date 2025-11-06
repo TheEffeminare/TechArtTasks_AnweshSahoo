@@ -1,96 +1,127 @@
-# 🎨 Tech Art Test — Anwesh Sahoo
+# Tech Art Test — Anwesh Sahoo
 
-Welcome to my Tech Art Test submission!  
-This project showcases my approach to building **modular, scalable, and visually polished UI systems** in Unity.  
-It includes three interconnected tasks — each focusing on different aspects of UI architecture, responsiveness, and creative implementation.
-
----
-
-## 🧭 Overview
-
-As a **Technical Artist**, my goal throughout this project was to design a foundation that is:
-- Clean, modular, and easy to extend  
-- Artist-friendly, with visually rich transitions and responsive layouts  
-- Technically sound, balancing performance with polish  
-
-Developed in **Unity 2022.3.31f1 (URP)**, this project includes:
-1. **Home Screen & Bottom Bar**
-2. **Settings Popup System**
-3. **Level Completed Screen**
+This project represents my approach to building modular, scalable, and thoughtfully designed UI systems within Unity.  
+Each task focuses on a different aspect of how I think about technical art — the intersection of structure, responsiveness, and visual expression.
 
 ---
 
-## 📱 Task 1: Home Screen & Bottom Bar
+## Overview
 
-### 🎯 Goal
-Implement a responsive home screen UI with adaptive top and bottom bars and animated navigation buttons.
+As a Technical Artist, I have always been drawn to the space where design and engineering meet.  
+My intent throughout this project was to create a system that feels both artistically refined and technically sound — one that can adapt, scale, and endure within a production pipeline.
 
-### 🧩 Features
-- **Dynamic Canvas Scaling:**  
-  `ResponsiveCanvasMatch.cs` automatically adjusts the CanvasScaler’s match ratio between width and height for phones and tablets.
-  
-- **Smart Padding System:**  
-  `ResponsiveBarPadding.cs` interpolates left/right padding and spacing for both the top and bottom bars, ensuring proportional layouts across devices.
+Developed in Unity 2022.3.31f1 (URP), the project includes three main tasks:
 
-- **Safe Area Support:**  
-  `SafeAreaFitter.cs` and `UIRectNaNGuard.cs` ensure the UI stays within device safe zones and heals any corrupted RectTransform values during prefab editing.
+1. Home Screen and Bottom Bar  
+2. Settings Popup System  
+3. Level Completed Screen
 
-- **Animated Bottom Bar:**  
-  Custom toggle logic via:
-  - `ToggleKnob.cs` (knob animation)
-  - `ToggleBackgroundSwap.cs` (sprite swapping for ON/OFF states)
-  
-- Fully prefabbed for **scalability and reuse** in future screens.
+Every decision — from naming conventions to visual transitions — was made with an eye for clarity, extensibility, and purpose.
 
 ---
 
-## ⚙️ Task 2: Settings Popup
+## Task 1: Home Screen and Bottom Bar
 
-### 🎯 Goal
-Develop a reusable popup architecture with animation, dimming, and localization-ready structure.
+### Goal
+To implement a responsive home screen interface that adapts seamlessly across devices, supported by an animated and modular bottom navigation bar.
 
-### 🧩 Features
-- **Modular Popup System:**  
-  `PopupDriver.cs` powers all popup behaviors — open/close triggers, canvas fade, and dimmer management.  
-  Other popups (like Help or Shop) can inherit this logic instantly.
+### Implementation
+- **Responsive Canvas System:**  
+  The `ResponsiveCanvasMatch.cs` script dynamically adjusts the Canvas Scaler’s ratio between width and height, ensuring the layout maintains visual balance from tall phones to tablets.
 
-- **Dynamic Scaling:**  
-  `ScaleToSafeHeight.cs` keeps popup content proportionate on any device.
+- **Adaptive Padding:**  
+  Using `ResponsiveBarPadding.cs`, both top and bottom bars interpolate their spacing and padding based on aspect ratio, maintaining proportional composition across devices.
 
-- **Background Blur Prototype:**  
-  `UIBlurGrabFeature.cs` is a custom URP renderer feature that grabs the screen into `_UIBlurTex`, laying the groundwork for Gaussian or DoF-based blur effects.
+- **Safe Area Integration:**  
+  The combination of `SafeAreaFitter.cs` and `UIRectNaNGuard.cs` ensures the interface always respects device safe zones, automatically correcting invalid transforms caused by prefab or resolution changes.
 
-- **Row-based Layout:**  
-  Each setting row (`Sound`, `Music`, `Vibration`, etc.) is modular with independent toggles, dividers, and icons.
+- **Animated Navigation:**  
+  Each bottom bar button includes toggle feedback built using `ToggleKnob.cs` and `ToggleBackgroundSwap.cs`. The result is a set of controls that feel responsive, tactile, and consistent.
 
-- **Smooth Interactions:**  
-  Toggles slide with curves, buttons highlight with feedback, and the popup feels alive.
+This structure allows any designer or developer to introduce new navigation buttons or reskin the bar without reworking the underlying logic — a key part of how I think about maintainability in UI systems.
 
 ---
 
-## 🏆 Task 3: Level Completed Screen
+## Task 2: Settings Popup
 
-### 🎯 Goal
-Design a celebratory “Level Complete” experience that combines UI, animation, and VFX for a rewarding moment.
+### Goal
+To build a reusable popup architecture that feels cohesive, scalable, and ready for future extensions such as localization and theming.
 
-### 🧩 Features
-- **Main Controller:**  
-  `LevelCompleteDriver.cs` orchestrates all transitions — fading in UI, triggering confetti and bursts, animating score counters, and fading out gracefully.
+### Implementation
+- **Popup Core Architecture:**  
+  The base system, built around `PopupDriver.cs`, manages open and close states through animator triggers. It also handles canvas fading, input blocking, and background dimming, allowing any new popup (for example, Shop or Help) to inherit the same structure effortlessly.
 
-- **Particle Control:**  
-  Built-in safety ensures no particle ghosting. All VFX reset and restore material colors cleanly on re-open.
+- **Content Scaling:**  
+  `ScaleToSafeHeight.cs` ensures popup content maintains visual proportion regardless of device resolution or safe area height.
 
-- **Score Counter Animation:**  
-  Coroutine-based number tick with easing for a satisfying reward reveal.
+- **Row and Layout Design:**  
+  Each settings row (Sound, Music, Vibration, Notification, Language) was built as a self-contained component with modular toggles, icons, and dividers.  
+  This enables the popup to grow organically as new features are introduced.
+
+- **Interaction Design:**  
+  The interface favors subtlety. Toggles slide with controlled easing, and buttons respond visually to touch — small choices that make the system feel deliberate and complete.
+
+The result is a system that can scale to accommodate more functionality without losing its structural clarity or aesthetic coherence.
 
 ---
 
-## 💬 Final Thoughts
+## Task 3: Level Completed Screen
 
-This project captures how I approach real-world game UI challenges — blending **artistic sensitivity with technical depth**.  
-From modular prefabs to shader experimentation, every detail reflects my intent to create systems that are **delightful to use, easy to extend, and built for the future**.
+### Goal
+To create a visually rich and emotionally rewarding moment that celebrates player achievement, combining animation, UI, and particle effects in harmony.
 
-Thanks for taking the time to review my work! 🌟
+### Implementation
+- **Central Controller:**  
+  The `LevelCompleteDriver.cs` script orchestrates the sequence — fading in the canvas, triggering confetti and background effects, animating score counters, and then closing the sequence smoothly.
 
-— **Anwesh Sahoo**  
-🎮 Technical Artist | [anweshsahoo.com](https://anweshsahoo.com)
+- **VFX and Particle Logic:**  
+  All particle systems are cached and reset cleanly through utility functions that manage emission, color restoration, and state clearing.  
+  This ensures the screen behaves predictably even after multiple activations.
+
+- **Animated Score Feedback:**  
+  The score counter uses coroutine-based interpolation to gradually reveal the final value, timed to align with the peak of the visual effects for maximum impact.
+
+- **Visual Cohesion:**  
+  Elements such as the confetti burst, circular rays, and top highlights are timed and layered intentionally, building a moment that feels both joyful and controlled.
+
+This section was a chance to explore how subtle design choices — timing, fade duration, particle rhythm — can transform a simple UI screen into an experience.
+
+---
+
+## Technical and Artistic Considerations
+
+- **Code Structure:**  
+  Each script follows a component-based architecture with serialized fields and clear naming conventions.  
+  The folder hierarchy was designed for legibility and scalability:
+
+
+- **Performance Practices:**  
+I minimized per-frame updates in favor of event-driven logic.  
+Particles are toggled, not destroyed.  
+Animations are GPU-efficient and compatible with lightweight URP rendering.
+
+- **Testing and Responsiveness:**  
+All components were validated across multiple aspect ratios (from 21:9 phones to 4:3 tablets).  
+The adaptive padding, safe area fitters, and canvas scaling ensure the layout remains cohesive regardless of resolution.
+
+---
+
+## Reflections
+
+This project is more than a test — it represents my design philosophy.  
+I believe that great technical art is not just about solving problems but about **solving them beautifully**.  
+Every choice, from animation curves to folder structure, was intentional.  
+
+In future iterations, I’d like to explore:
+- Depth-of-field blur using URP volume profiles  
+- Sparkle and shimmer layers for the Level Complete sequence  
+- A unified event-driven UI manager for all popups  
+- Localization support for dynamic text components
+
+This exercise reaffirmed how much I enjoy bridging creativity and precision — shaping systems that are efficient for engineers and expressive for artists.
+
+---
+
+### Anwesh Sahoo  
+Technical Artist  
+[https://anweshsahoo.com](https://anweshsahoo.com)
