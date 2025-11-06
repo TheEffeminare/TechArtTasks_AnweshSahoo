@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class ToggleKnob : MonoBehaviour
 {
     [SerializeField] Toggle toggle;            // assign self
-    [SerializeField] RectTransform knob;       // your Knob
+    [SerializeField] RectTransform knob;       // the Knob art
     [SerializeField] float xOff = 18f;         // knob X when OFF
     [SerializeField] float xOn  = 112f;        // knob X when ON
     [SerializeField] float moveTime = 0.12f;   // slide duration
@@ -49,3 +49,4 @@ public class ToggleKnob : MonoBehaviour
         knob.anchoredPosition = end;
     }
 }
+
