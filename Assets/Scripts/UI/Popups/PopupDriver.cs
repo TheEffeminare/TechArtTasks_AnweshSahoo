@@ -95,7 +95,7 @@ public class PopupDriver : MonoBehaviour
         // Immediately remove the blocker
         SetDimmer(false);
 
-        // Turn off after the close anim finishes (adjust to your clip length)
+        // Turning off after the close anim finishes
         CancelInvoke(nameof(DisableAfterClose));
         Invoke(nameof(DisableAfterClose), 0.25f);
 
@@ -121,5 +121,6 @@ public class PopupDriver : MonoBehaviour
         if (dimmerImage) dimmerImage.raycastTarget = on; // critical line
     }
 }
+
 
 
